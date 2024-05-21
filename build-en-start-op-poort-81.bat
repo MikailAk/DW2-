@@ -1,6 +1,9 @@
 @echo off
-REM Build de Docker image
-docker build -t demo-site .
+REM Update de timestamp om caching te voorkomen
+bash -c "./update-timestamp.sh"
+
+REM Build de Docker image zonder cache
+docker build --no-cache -t demo-site .
 
 REM Stop en verwijder een bestaande container
 docker stop demo-site
